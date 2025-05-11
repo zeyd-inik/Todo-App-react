@@ -12,7 +12,7 @@ function App() {
     { input: 'Do homework', isDone: false },
   ]);
 
-  const selectedTab = 'Open';
+  const [selectedTab, setSelectedTab] = useState('Open');
   const tabs = ['All', 'Open', 'Completed'];
 
   return (
@@ -20,6 +20,7 @@ function App() {
       <div className="wrapper">
         <Header todos={todos} />
         <Tabs
+          setSelectedTab={setSelectedTab}
           selectedTab={selectedTab}
           tabs={tabs}
           todos={todos}

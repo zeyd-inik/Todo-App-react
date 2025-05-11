@@ -1,10 +1,20 @@
 .tabs {
+  hr {
+    transform: translateY(-4px);
+    height: 6px;
+  }
   button {
     color: white;
     background-color: black;
     font-size: 18px;
     border: none;
+    border-bottom-color: black;
+    transition: border-bottom-color ease 0.3s;
+
     padding: 0 1rem;
+    &.active {
+      border-bottom: 4px rgb(182, 94, 245) solid;
+    }
     &:hover {
       cursor: pointer;
     }

@@ -1,6 +1,6 @@
 import './tabs.scss';
 
-function Tabs({ selectedTab, tabs, todos }) {
+function Tabs({ selectedTab, setSelectedTab, tabs, todos }) {
   const openTodos = todos.filter((todo) => {
     return todo.isDone === false;
   });
@@ -19,7 +19,13 @@ function Tabs({ selectedTab, tabs, todos }) {
           count = completedTodos.length;
         }
         return (
-          <button key={index}>
+          <button
+            key={index}
+            className={tab == selectedTab ? 'active' : ''}
+            onClick={() => {
+              setSelectedTab(tab);
+            }}
+          >
             {tab}
             <span> ({count})</span>
           </button>
