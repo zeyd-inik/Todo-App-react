@@ -5,6 +5,9 @@
     font-size: 18px;
     border: none;
     padding: 0 1rem;
+    &:hover {
+      cursor: pointer;
+    }
     span {
       color: gray;
     }
