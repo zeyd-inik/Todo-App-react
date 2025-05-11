@@ -3,19 +3,31 @@ import Header from './components/header/Header';
 import Tabs from './components/tabs/Tabs';
 import TodoList from './components/todoList/TodoList';
 import TodoInput from './components/todoInput/TodoInput';
+import { useState } from 'react';
 
 function App() {
-  const todos = [
-    { input: 'Go to the market', isDone: false },
+  const [todos, setTodos] = useState([
+    { input: 'Go to the market', isDone: true },
     { input: 'Go to the hospital', isDone: false },
-  ];
+    { input: 'Do homework', isDone: false },
+  ]);
+
+  const selectedTab = 'Open';
+  const tabs = ['All', 'Open', 'Completed'];
+
   return (
-    <>
-      <Header todos={todos} />
-      <Tabs />
-      <TodoList />
-      <TodoInput />
-    </>
+    <div className="app">
+      <div className="wrapper">
+        <Header todos={todos} />
+        <Tabs
+          selectedTab={selectedTab}
+          tabs={tabs}
+          todos={todos}
+        />
+        <TodoList />
+        <TodoInput />
+      </div>
+    </div>
   );
 }
 

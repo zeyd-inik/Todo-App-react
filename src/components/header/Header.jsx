@@ -6,8 +6,8 @@ function Header({ todos }) {
   return (
     <h2 className="header">
       {isSingular
-        ? `You have ${amountsOfTodos} task `
-        : `You have ${amountsOfTodos} tasks`}
+        ? `You have ${amountsOfTodos} open task. `
+        : `You have ${amountsOfTodos} open tasks.`}
     </h2>
   );
 }
