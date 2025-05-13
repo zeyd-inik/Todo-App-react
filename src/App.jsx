@@ -17,10 +17,6 @@ function App() {
   const tabs = ['All', 'Open', 'Completed'];
 
   const handleDone = (selectedTodoId) => {
-    /*  const changedTodoIndex = todos.findIndex((todo) => {
-      return todo.id === selectedTodoId;
-    }); */
-
     const changedTodo = {
       ...todos.find((todo) => todo.id === selectedTodoId),
       isDone: true,
@@ -33,7 +29,12 @@ function App() {
     setTodos([...filteredTodos, changedTodo]);
   };
 
-  const handleDelete = (id) => {};
+  const handleDelete = (selectedTodoId) => {
+    let newTodos = todos.filter((todo) => {
+      return todo.id !== selectedTodoId;
+    });
+    setTodos(newTodos);
+  };
 
   return (
     <div className="app">
