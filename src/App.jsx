@@ -36,6 +36,14 @@ function App() {
     setTodos(newTodos);
   };
 
+  const addTask = (task) => {
+    let newTodos = [
+      ...todos,
+      { input: task, isDone: false, id: crypto.randomUUID },
+    ];
+    setTodos(newTodos);
+  };
+
   return (
     <div className="app">
       <div className="wrapper">
@@ -52,7 +60,7 @@ function App() {
           handleDelete={handleDelete}
           selectedTab={selectedTab}
         />
-        <TodoInput />
+        <TodoInput addTask={addTask} />
       </div>
     </div>
   );

@@ -1,0 +1,24 @@
+.todoInput {
+  display: flex;
+  gap: 1rem;
+  .text-input {
+    flex: 1;
+    padding: 5px 12px;
+    background-color: rgb(33, 41, 75);
+    height: 45px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: white;
+    &:focus {
+      outline: 1px rgb(141, 231, 239) solid;
+    }
+  }
+  .btn {
+    height: 100%;
+    color: rgb(141, 231, 239);
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
