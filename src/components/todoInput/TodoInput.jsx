@@ -20,6 +20,9 @@ function TodoInput({ addTask }) {
         size={40}
         className="btn"
         onClick={() => {
+          if (input == '') {
+            return;
+          }
           addTask(input);
           setInput('');
         }}

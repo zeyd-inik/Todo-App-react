@@ -3,16 +3,39 @@ import Header from './components/header/Header';
 import Tabs from './components/tabs/Tabs';
 import TodoList from './components/todoList/TodoList';
 import TodoInput from './components/todoInput/TodoInput';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function App() {
+  const [selectedTab, setSelectedTab] = useState('Open');
+
   const [todos, setTodos] = useState([
-    { input: 'Go to the market', isDone: true, id: crypto.randomUUID() },
-    { input: 'Go to the hospital', isDone: false, id: crypto.randomUUID() },
-    { input: 'Do homework', isDone: false, id: crypto.randomUUID() },
+    {
+      input: 'Do Something',
+      isDone: false,
+      id: crypto.randomUUID(),
+    },
   ]);
 
-  const [selectedTab, setSelectedTab] = useState('Open');
+  const isInitial = useRef(true);
+
+  const updateLocalStorage = () => {
+    localStorage.setItem('todo-list', JSON.stringify(todos));
+  };
+  useEffect(() => {
+    if (localStorage.getItem('todo-list') === null) {
+      return;
+    }
+    const db = JSON.parse(localStorage.getItem('todo-list'));
+    setTodos(db);
+  }, []);
+
+  useEffect(() => {
+    if (isInitial.current) {
+      isInitial.current = false;
+      return;
+    }
+    updateLocalStorage();
+  }, [todos]);
 
   const tabs = ['All', 'Open', 'Completed'];
 
@@ -39,7 +62,7 @@ function App() {
   const addTask = (task) => {
     let newTodos = [
       ...todos,
-      { input: task, isDone: false, id: crypto.randomUUID },
+      { input: task, isDone: false, id: crypto.randomUUID() },
     ];
     setTodos(newTodos);
   };
